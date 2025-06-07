@@ -1,0 +1,29 @@
+{
+  "Tech With Tim": {
+    "country": "USA",
+    "genre": "Entertainment",
+    "thumbnail": "https://yt3.googleusercontent.com/.../photo.jpg"
+  },
+  "Google for Developers": {
+    "country": "USA",
+    "genre": "Education",
+    "thumbnail": "https://yt3.googleusercontent.com/.../photo.jpg"
+  },
+  "freeCodeCamp.org": {
+    "country": "USA",
+    "genre": "Education",
+    "thumbnail": "https://yt3.googleusercontent.com/.../photo.jpg"
+  },
+  "freeCodeCamp Español": {
+    "country": "UK",
+    "genre": "Education",
+    "thumbnail": "https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9"
+  },
+
+  "The Challenge Club": {
+    "country": "UK",
+    "genre": "Education",
+    "thumbnail": "https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9"
+  }
+  
+}

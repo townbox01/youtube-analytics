@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+<h1>Extract YouTube Channel Data</h1>
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+<form method="POST">
+  <label for="channel_id">YouTube Channel ID:</label>
+  <input type="text" id="channel_id" name="channel_id" required />
+  <button type="submit">Extract Data</button>
+</form>
+
+<div class="instructions">
+  <h3>How to find a Channel ID:</h3>
+  <ol>
+    <li>Go to the YouTube channel</li>
+    <li>View page source (Ctrl+U)</li>
+    <li>Search for "channelId"</li>
+  </ol>
+  <p>Example: UC_x5XG1OV2P6uZZ5FSM9Ttw (Google Developers)</p>
+</div>
+{% endblock %}

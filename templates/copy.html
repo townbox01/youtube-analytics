@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+<h1>YouTube Channel Analytics</h1>
+
+<div class="stats">
+  <div class="stat-card">
+    <h3>Channels Tracked</h3>
+    <p>{{ channels|length }}</p>
+  </div>
+  <div class="stat-card">
+    <h3>Latest Update</h3>
+    <p>
+      {{ channels[0].collected_at.strftime('%Y-%m-%d %H:%M') if channels else
+      'N/A' }}
+    </p>
+  </div>
+</div>
+
+{% if chart %}
+<div class="chart-container">{{ chart|safe }}</div>
+{% endif %}
+
+<table>
+  <thead>
+    <tr>
+      <th>Channel</th>
+      <th>Subscribers</th>
+      <th>Views</th>
+      <th>Videos</th>
+      <th>Last Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for channel in channels %}
+    <tr>
+      <td>{{ channel.title }}</td>
+      <td>{{ "{:,}".format(channel.subscribers) }}</td>
+      <td>{{ "{:,}".format(channel.views) }}</td>
+      <td>{{ "{:,}".format(channel.videos) }}</td>
+      <td>{{ channel.collected_at.strftime('%Y-%m-%d %H:%M') }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

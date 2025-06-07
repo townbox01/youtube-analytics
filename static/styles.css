@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+nav {
+    background: #333;
+    padding: 1rem;
+}
+
+nav a {
+    color: white;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.container {
+    padding: 2rem;
+}
+
+.stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 4px;
+    min-width: 200px;
+}
+
+.stat-card h3 {
+    margin-top: 0;
+    color: #666;
+}
+
+.chart-container {
+    margin: 2rem 0;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.error {
+    color: #d32f2f;
+    background-color: #ffebee;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+form {
+    max-width: 500px;
+    margin: 2rem 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.instructions {
+    background: #f4f4f4;
+    padding: 1rem;
+    border-radius: 4px;
+    max-width: 500px;
+}
+
+
+
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tab-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  border-radius: 4px 4px 0 0;
+}
+
+.tab-button.active {
+  background-color: #fff;
+  border-bottom: none;
+  font-weight: bold;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+} 

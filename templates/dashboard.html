@@ -1,0 +1,188 @@
+{% extends "base.html" %} {% block content %}
+<h1>YouTube Channel Analytics</h1>
+
+<div class="stats">
+  <div class="stat-card">
+    <h3>Channels Tracked</h3>
+    <p>{{ channels|length }}</p>
+  </div>
+  <div class="stat-card">
+    <h3>Latest Update</h3>
+    <p>
+      {{ channels[0].collected_at.strftime('%Y-%m-%d %H:%M') if channels else
+      'N/A' }}
+    </p>
+  </div>
+</div>
+
+{% if chart_sub and chart_views %}
+<div class="tab-container">
+  <div class="tabs">
+    <button
+      class="tab-button active"
+      onclick="showTab('subscribers')"
+      style="color: black"
+    >
+      Subscribers
+    </button>
+    <button class="tab-button" onclick="showTab('views')" style="color: black">
+      Views
+    </button>
+  </div>
+
+  <div id="subscribers" class="tab-content active">
+    <div class="chart-container">{{ chart_sub|safe }}</div>
+  </div>
+
+  <div id="views" class="tab-content">
+    <div class="chart-container">{{ chart_views|safe }}</div>
+  </div>
+</div>
+{% endif %} {% if engagement_stats %}
+<h2>📊 Engagement Metrics</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Channel</th>
+      <th>Views/Sub</th>
+      <th>Views/Video</th>
+      <th>Subs/Video</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in engagement_stats %}
+    <tr>
+      <td>{{ item.title }}</td>
+      <td>{{ "{:.2f}".format(item.views_per_sub) }}</td>
+      <td>{{ "{:.2f}".format(item.views_per_video) }}</td>
+      <td>{{ "{:.2f}".format(item.subs_per_video) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<!-- Replace the single engagement chart with tabbed charts -->
+<h2>Engagement Comparison</h2>
+<div class="tab-container">
+  <div class="tabs">
+    <button
+      class="tab-button active"
+      onclick="showEngagementTab('views_per_sub')"
+      style="color: black"
+    >
+      Views/Sub
+    </button>
+    <button
+      class="tab-button"
+      onclick="showEngagementTab('views_per_video')"
+      style="color: black"
+    >
+      Views/Video
+    </button>
+    <button
+      class="tab-button"
+      onclick="showEngagementTab('subs_per_video')"
+      style="color: black"
+    >
+      Subs/Video
+    </button>
+  </div>
+
+  <div id="views_per_sub" class="tab-content active">
+    <div class="chart-container">{{ chart_views_per_sub|safe }}</div>
+  </div>
+
+  <div id="views_per_video" class="tab-content">
+    <div class="chart-container">{{ chart_views_per_video|safe }}</div>
+  </div>
+
+  <div id="subs_per_video" class="tab-content">
+    <div class="chart-container">{{ chart_subs_per_video|safe }}</div>
+  </div>
+</div>
+
+<script>
+  function showTab(tabName) {
+    const tabContents = document.querySelectorAll(".tab-content");
+    const tabButtons = document.querySelectorAll(".tab-button");
+
+    tabContents.forEach((tab) => tab.classList.remove("active"));
+    tabButtons.forEach((btn) => btn.classList.remove("active"));
+
+    document.getElementById(tabName).classList.add("active");
+    event.currentTarget.classList.add("active");
+  }
+
+  function showEngagementTab(tabName) {
+    // Get only engagement tab elements
+    const engagementTabs = document.querySelectorAll(
+      "#views_per_sub, #views_per_video, #subs_per_video"
+    );
+    const engagementButtons = document.querySelectorAll(
+      "button[onclick*='showEngagementTab']"
+    );
+
+    engagementTabs.forEach((tab) => tab.classList.remove("active"));
+    engagementButtons.forEach((btn) => btn.classList.remove("active"));
+
+    document.getElementById(tabName).classList.add("active");
+    event.currentTarget.classList.add("active");
+  }
+</script>
+
+<h2>🇬🇧 UK Artist Channel Ranking</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Channel Title</th>
+      <th>Views</th>
+      <th>Subscribers</th>
+      <th>Views per Subscriber</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in uk_table %}
+    <tr>
+      <td>{{ row.rank }}</td>
+      <td>
+        <img
+          src="{{row.thumbnail}}"
+          style="width: 40px; height: 40px; border-radius: 50%"
+        />
+        {{ row.title }}
+      </td>
+      <td>{{ "{:,}".format(row.views) }}</td>
+      <td>{{ "{:,}".format(row.subscribers) }}</td>
+      <td>{{ "{:.2f}".format(row.views_per_sub) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>🇺🇸 US Artist Channel Ranking</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Channel Title</th>
+      <th>Views</th>
+      <th>Subscribers</th>
+      <th>Views per Subscriber</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in us_table %}
+    <tr>
+      <td>{{ row.rank }}</td>
+      <td>{{ row.title }}</td>
+      <td>{{ "{:,}".format(row.views) }}</td>
+      <td>{{ "{:,}".format(row.subscribers) }}</td>
+      <td>{{ "{:.2f}".format(row.views_per_sub) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
