@@ -71,9 +71,10 @@ class YouTubeChannel(db.Model):
         print("Still exists after delete?", check is not None)
         return deleted > 0
 
-# Create tables (run this manually once)
-def create_tables():
-    with app.app_context():
+# # Create tables (run this manually once)
+# def create_tables():
+with app.app_context():
+        
         db.create_all()
 
 
