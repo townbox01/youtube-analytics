@@ -10,5 +10,5 @@ class Config:
     
     # Database
     # SQLALCHEMY_DATABASE_URI = f"postgresql://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}/{os.getenv('POSTGRES_DB')}"
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:fame007dav@34.29.233.211/youtube'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:fame007dav@34.29.233.211/townbox'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
