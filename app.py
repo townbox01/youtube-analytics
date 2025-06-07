@@ -178,8 +178,12 @@ class DataProcessor:
             "videos": int(channel["statistics"].get("videoCount", 0))
         }
     
+@app.route("/")
+def health():
+    return "OK", 200
+    
 
-@app.route('/')
+@app.route('/dashboard')
 def dashboard():
     all_records = YouTubeChannel.query.order_by(YouTubeChannel.collected_at.asc()).all()
 
