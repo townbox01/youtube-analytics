@@ -13,7 +13,7 @@ from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
 from flask import Response
 from flask_httpauth import HTTPBasicAuth
-import os
+
 
 
 
@@ -22,6 +22,9 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 
 
+# Create tables on startup
+with app.app_context():
+    db.create_all()
 
 # # Optional: group by endpoint, method, etc.
 # metrics.info('app_info', 'YouTube Tracker Flask App', version='1.0.0')
@@ -73,9 +76,8 @@ class YouTubeChannel(db.Model):
 
 # # Create tables (run this manually once)
 # def create_tables():
-with app.app_context():
-        
-        db.create_all()
+#     with app.app_context():
+#         db.create_all()
 
 
 class SchedulerConfig:
@@ -179,12 +181,8 @@ class DataProcessor:
             "videos": int(channel["statistics"].get("videoCount", 0))
         }
     
-@app.route("/")
-def health():
-    return "OK", 200
-    
 
-@app.route('/dashboard')
+@app.route('/')
 def dashboard():
     all_records = YouTubeChannel.query.order_by(YouTubeChannel.collected_at.asc()).all()
 
@@ -434,4 +432,4 @@ def metrics():
 # if __name__ == '__main__':
 #     with app.app_context():
 #         db.create_all()
-#     app.run(host='0.0.0.0',port=int(os.environ.get("PORT", 8080)),debug=True)
+#     app.run(debug=True)
