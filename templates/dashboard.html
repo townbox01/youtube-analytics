@@ -184,7 +184,14 @@
     {% for row in us_table %}
     <tr>
       <td>{{ row.rank }}</td>
-      <td>{{ row.title }}</td>
+
+      <td>
+        <img
+          src="{{row.thumbnail}}"
+          style="width: 40px; height: 40px; border-radius: 50%"
+        />
+        {{ row.title }}
+      </td>
       <td>{{ "{:,}".format(row.views) }}</td>
       <td>{{ "{:,}".format(row.subscribers) }}</td>
       <td>{{ "{:.2f}".format(row.views_per_sub) }}</td>

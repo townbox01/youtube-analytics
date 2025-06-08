@@ -1,23 +1,53 @@
 {
-  "Tech With Tim": {
+  "Drake": {
     "country": "USA",
     "genre": "Entertainment",
-    "thumbnail": "https://yt3.googleusercontent.com/.../photo.jpg"
+    "thumbnail": "https://c.files.bbci.co.uk/16409/production/_131354119_rapper_drake_getty.jpg"
   },
-  "Google for Developers": {
+  "Taylor Swift": {
     "country": "USA",
     "genre": "Education",
-    "thumbnail": "https://yt3.googleusercontent.com/.../photo.jpg"
+    "thumbnail": "https://cdn.abcotvs.com/dip/images/15156093_taylor-swift-clean-AP-TN-RESIZED-img.jpg"
   },
-  "freeCodeCamp.org": {
+  "Kendrick Lamar": {
     "country": "USA",
     "genre": "Education",
-    "thumbnail": "https://yt3.googleusercontent.com/.../photo.jpg"
+    "thumbnail": "https://ichef.bbci.co.uk/ace/standard/480/cpsprodpb/2373/live/1350f0d0-f07b-11ef-8c03-7dfdbeeb2526.jpg"
   },
-  "freeCodeCamp Español": {
-    "country": "UK",
+  "Justin Bieber": {
+    "country": "USA",
     "genre": "Education",
-    "thumbnail": "https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9"
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/d/da/Justin_Bieber_in_2015.jpg"
+  },
+  "Bruno Mars": {
+    "country": "USA",
+    "genre": "Education",
+    "thumbnail": "https://warm1069.com/wp-content/uploads/2024/10/Getty_BrunoMars_102824.jpg"
+  },
+  "Ariana Grande": {
+    "country": "USA",
+    "genre": "Education",
+    "thumbnail": "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/0632/production/_130868510_ariana-index4-getty.jpg"
+  },
+  "The Weeknd": {
+    "country": "USA",
+    "genre": "Education",
+    "thumbnail": "https://cdn.apollo.audio/one/media/6222/0137/a4bf/4948/f10f/d1c0/the-weeknd.jpg?quality=80&format=jpg"
+  },
+  "Billie Eilish": {
+    "country": "USA",
+    "genre": "Education",
+    "thumbnail": "https://media.glamourmagazine.co.uk/photos/64ccca835c915d8a7f4f8bb8/1:1/w_3523,h_3523,c_limit/BILLIE%20EILISH%20040823%20DEFAULT-GettyImages-1201586589.jpg"
+  },
+  "Kanye West": {
+    "country": "USA",
+    "genre": "Education",
+    "thumbnail": "https://e3.365dm.com/25/02/2048x1152/skynews-kanye-west-x_6824530.jpg"
+  },
+  "Beyoncé": {
+    "country": "USA",
+    "genre": "Education",
+    "thumbnail": "https://www.billboard.com/wp-content/uploads/2023/11/screengrab-beyonce-renaissance-film-2023-billboard-1548.jpg"
   },
 
   "Ed Sheeran": {
