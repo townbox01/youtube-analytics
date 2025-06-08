@@ -45,10 +45,30 @@
     "genre": "Music",
     "thumbnail": "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/15495/production/_130198178_lewiscapaldi5.jpg"
   },
-    "CalvinHarrisVEV": {
+    "SAM SMITH": {
     "country": "UK",
     "genre": "Music",
-    "thumbnail": "https://www.exitfest.org/wp-content/uploads/2022/07/klot_Calvin-Harris-2.jpg"
+    "thumbnail": "https://e3.365dm.com/23/05/2048x1152/skynews-sam-smith-concert_6166700.jpg"
+  },
+    "Coldplay": {
+    "country": "UK",
+    "genre": "Music",
+    "thumbnail": "https://artist99.cdn107.com/f7d/f7df8504d3756b4052c381941d684a51_xl.jpg"
+  },
+    "Little Mix": {
+    "country": "UK",
+    "genre": "Music",
+    "thumbnail": "https://images.squarespace-cdn.com/content/v1/566f07fcbfe873fa84dc6dce/1603810024113-ZCJ6VX9IOU1L70WTPZJR/SweetMelody.jpeg"
+  },
+    "Stormzy": {
+    "country": "UK",
+    "genre": "Music",
+    "thumbnail": "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/16414/production/_113965119_gettyimages-1207367706.jpg"
+  },
+    "Dua Lipa": {
+    "country": "UK",
+    "genre": "Music",
+    "thumbnail": "https://images.immediate.co.uk/production/volatile/sites/3/2024/06/Dua-Lipa-2ce83fb.jpg"
   }
   
 }
