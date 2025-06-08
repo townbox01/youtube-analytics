@@ -13,6 +13,7 @@ from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
 from flask import Response
 from flask_httpauth import HTTPBasicAuth
+import os
 
 
 
@@ -443,14 +444,13 @@ def metrics():
     return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
 
 
-if __name__ == '__main__':
-    with app.app_context():
-        # db.create_all()
-        app.run(host='0.0.0.0', port=8080)
-
-
-
 # if __name__ == '__main__':
 #     with app.app_context():
-#         db.create_all()
-#     app.run(debug=True)
+#         # db.create_all()
+#         app.run(host='0.0.0.0', port=8080)
+
+
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 8080))  # Use PORT if set, else default to 8080
+    app.run(host='0.0.0.0', port=port)
