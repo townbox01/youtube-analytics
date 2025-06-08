@@ -20,10 +20,35 @@
     "thumbnail": "https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9"
   },
 
-  "The Challenge Club": {
+  "Ed Sheeran": {
     "country": "UK",
-    "genre": "Education",
-    "thumbnail": "https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9"
+    "genre": "Music",
+    "thumbnail": "https://m.media-amazon.com/images/M/MV5BODI4NTkxOTkxMV5BMl5BanBnXkFtZTgwMzE0MDEzMTE@._V1_FMjpg_UX1000_.jpg"
+  },
+    "AdeleVEVO": {
+    "country": "UK",
+    "genre": "Music",
+    "thumbnail": "https://e3.365dm.com/24/01/2048x1152/skynews-adele-grammy_6439506.jpg"
+  },
+    "CalvinHarrisVEVO": {
+    "country": "UK",
+    "genre": "Music",
+    "thumbnail": "https://www.exitfest.org/wp-content/uploads/2022/07/klot_Calvin-Harris-2.jpg"
+  },
+    "Jessie J": {
+    "country": "UK",
+    "genre": "Music",
+    "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/jessie-j-1628946364.jpg"
+  },
+    "Lewis Capaldi": {
+    "country": "UK",
+    "genre": "Music",
+    "thumbnail": "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/15495/production/_130198178_lewiscapaldi5.jpg"
+  },
+    "CalvinHarrisVEV": {
+    "country": "UK",
+    "genre": "Music",
+    "thumbnail": "https://www.exitfest.org/wp-content/uploads/2022/07/klot_Calvin-Harris-2.jpg"
   }
   
 }
