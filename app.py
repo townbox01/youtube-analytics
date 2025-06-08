@@ -239,6 +239,7 @@ def dashboard():
 
         df['country'] = df['title'].map(lambda t: metadata.get(t, {}).get('country', 'Unknown'))
         df['genre'] = df['title'].map(lambda t: metadata.get(t, {}).get('genre', 'Unknown'))
+        #df['flag'] = df['title'].map(lambda t: metadata.get(t, {}).get('flag', 'Unknown'))
 
         print('ok here')
 
@@ -259,8 +260,10 @@ def dashboard():
         latest_df['views_per_video'] = latest_df.apply(lambda row: row['views'] / row['videos'] if row['videos'] else 0, axis=1)
         latest_df['subs_per_video'] = latest_df.apply(lambda row: row['subscribers'] / row['videos'] if row['videos'] else 0, axis=1)
 
+        print(latest_df)
 
-        engagement_stats = latest_df[['title', 'views_per_sub', 'views_per_video', 'subs_per_video']].to_dict(orient='records')
+
+        engagement_stats = latest_df[['title', 'country', 'views_per_sub', 'views_per_video', 'subs_per_video']].to_dict(orient='records')
 
 
 

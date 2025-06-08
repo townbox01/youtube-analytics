@@ -44,6 +44,7 @@
   <thead>
     <tr>
       <th>Channel</th>
+      <th>Country</th>
       <th>Views/Sub</th>
       <th>Views/Video</th>
       <th>Subs/Video</th>
@@ -53,6 +54,13 @@
     {% for item in engagement_stats %}
     <tr>
       <td>{{ item.title }}</td>
+      <td>
+        {% if item.country == 'UK' %}
+        <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" width="20" />
+        {{ item.country }} {% elif item.country == 'USA' %}
+        <img src="https://flagcdn.com/w20/us.png" alt="US Flag" width="20" />
+        {{ item.country }} {% else %} {{ item.country }} {% endif %}
+      </td>
       <td>{{ "{:.2f}".format(item.views_per_sub) }}</td>
       <td>{{ "{:.2f}".format(item.views_per_video) }}</td>
       <td>{{ "{:.2f}".format(item.subs_per_video) }}</td>
