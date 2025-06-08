@@ -21,13 +21,18 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 
+# print(app.config['SQLALCHEMY_DATABASE_URI'])
+
 
 # Create tables on startup
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     print('db table creating....')
+#     db.create_all()
+#     print('done')
 
 # # Optional: group by endpoint, method, etc.
 # metrics.info('app_info', 'YouTube Tracker Flask App', version='1.0.0')
+app.config['SQLALCHEMY_ECHO'] = True
 
 
 auth = HTTPBasicAuth()
@@ -184,6 +189,15 @@ class DataProcessor:
 
 @app.route('/')
 def dashboard():
+
+    # Initialize all chart variables at the start
+    chart_sub = chart_views = chart_country_subs = None
+    chart_views_per_sub = chart_views_per_video = chart_subs_per_video = None
+    engagement_stats = []
+    top_growth = []
+    uk_table = []
+    us_table = []
+    metadata = {}
     all_records = YouTubeChannel.query.order_by(YouTubeChannel.collected_at.asc()).all()
 
     latest_per_channel = {}
@@ -427,6 +441,13 @@ def delete_channel():
 @auth.login_required
 def metrics():
     return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
+
+
+if __name__ == '__main__':
+    with app.app_context():
+        # db.create_all()
+        app.run(host='0.0.0.0', port=8080)
+
 
 
 # if __name__ == '__main__':
