@@ -14,6 +14,8 @@ from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
 from flask import Response
 from flask_httpauth import HTTPBasicAuth
 import os
+from apscheduler.schedulers.background import BackgroundScheduler
+
 
 
 
@@ -21,20 +23,6 @@ import os
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
-
-# print(app.config['SQLALCHEMY_DATABASE_URI'])
-
-
-# Create tables on startup
-# with app.app_context():
-#     print('db table creating....')
-#     db.create_all()
-#     print('done')
-
-# # Optional: group by endpoint, method, etc.
-# metrics.info('app_info', 'YouTube Tracker Flask App', version='1.0.0')
-app.config['SQLALCHEMY_ECHO'] = True
-
 
 auth = HTTPBasicAuth()
 
@@ -80,10 +68,7 @@ class YouTubeChannel(db.Model):
         print("Still exists after delete?", check is not None)
         return deleted > 0
 
-# # Create tables (run this manually once)
-# def create_tables():
-#     with app.app_context():
-#         db.create_all()
+
 
 
 class SchedulerConfig:
@@ -96,9 +81,22 @@ app.config.from_object(SchedulerConfig)
 
 scheduler = APScheduler()
 scheduler.init_app(app)
-if not scheduler.running:
-    scheduler.start()
-    print("Scheduler started successfully")
+
+
+
+
+# if not scheduler.running:
+#     scheduler.start()
+#     print("Scheduler started successfully")
+
+# app.py - Add this after scheduler initialization
+# if not app.debug or os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+#     if not scheduler.running:
+#         scheduler.start()
+#         print("Scheduler started in main process")
+
+
+
 
 def scheduled_extraction(channel_id):
     with app.app_context():
@@ -444,9 +442,27 @@ def metrics():
     return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
 
 
+
+from flask import jsonify
+
+@app.route('/scheduled-extract', methods=['POST'])
+def scheduled_extract():
+    # Get all distinct channel IDs from the database
+    channel_ids = [c.channel_id for c in YouTubeChannel.query.distinct(YouTubeChannel.channel_id)]
+    results = []
+    for channel_id in channel_ids:
+        try:
+            scheduled_extraction(channel_id)
+            results.append({'channel_id': channel_id, 'status': 'success'})
+        except Exception as e:
+            results.append({'channel_id': channel_id, 'status': f'error: {str(e)}'})
+    return jsonify(results=results)
+
+
+
 # if __name__ == '__main__':
 #     with app.app_context():
-#         # db.create_all()
+#         db.create_all()
 #         app.run(host='0.0.0.0', port=8080)
 
 
@@ -454,3 +470,6 @@ def metrics():
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8080))  # Use PORT if set, else default to 8080
     app.run(host='0.0.0.0', port=port)
+
+
+
